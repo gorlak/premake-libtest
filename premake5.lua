@@ -1,3 +1,10 @@
+newoption
+{
+	trigger = "fix",
+	description = "Set to fix shared lib loading"
+}
+
+
 solution "libtest"
 
 platforms{ "x64" }
@@ -19,6 +26,10 @@ project "bar"
 	kind "SharedLib"
 	files { "bar/*.cpp" }
 	links { "foo" }
+
+if _OPTIONS[ "fix"] then
+	linkoptions { "-Wl,-install_name,@executable_path/libbar.dylib" }
+end
 
 project "baz"
 	language "C++"
