@@ -65,7 +65,7 @@ if _OPTIONS[ "fix" ] then
 
 	-- Add $ORIGIN as a valid path to use to resolve shared objects at runtime
 	--  This adds the directory of the referencing module as a valid location to resolve dependent modules
-	configuration "linux" linkoptions { "-Wl,-rpath=\\$$ORIGIN",
+	configuration "linux" linkoptions { "-Wl,-rpath=\\$$ORIGIN" }
 else
 	links { "foo", "bar" }
 end
